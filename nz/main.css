@@ -1,6 +1,7 @@
 body {
     max-width: 1280px;
     margin: auto;
+    font-family: "Roboto";
  }
  
  header {
@@ -43,7 +44,7 @@ main {
 }
 
 main figure {
-    margin-left: 0;4
+    margin-left: 0;
 }
 main figcaption{
     float:left;
@@ -64,3 +65,5 @@ main figure img {
 .next {
     float: right;
 }
+
+
