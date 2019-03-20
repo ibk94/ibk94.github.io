@@ -10,9 +10,12 @@ const titel = div.getAttribute("data-title");
 //  Karte initialisieren
 let karte = L.map("map");
 //console.log(karte);
-
+ 
 // auf Ausschnitt zoomen
 karte.setView(
     [breite,laenge],
     13
 );
+
+// open street map einbauen
+L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
