@@ -7,10 +7,9 @@ body {
     text-align: center;
     background-image: url("images/header.JPG");
     background-position: 0 75%;
- 
  }
  
- h2 {
+ header h2 {
     font-size: 4em;
     color: #74a0d2;
     margin: 0;
@@ -20,7 +19,6 @@ body {
  header h3 {
     font-size: 2em;
     color: white;
- 
  }
  
  header h4 {
@@ -42,4 +40,13 @@ address a{
 main {
     width: 70%;
     margin: auto;
+}
+
+main figure {
+    margin-left: 0;4
+}
+main figcaption{
+    float:left;
+    margin-left: -12.5em;
+    width: 11.5em;
 }
