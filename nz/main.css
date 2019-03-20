@@ -14,6 +14,7 @@ body {
     font-size: 4em;
     color: #74a0d2;
     margin: 0;
+    padding: 1em 0 ;
  }
  
  header h3 {
@@ -34,4 +35,7 @@ body {
      border-radius: 50%;
      margin-top: -50px;
  }
+address a{
+    color: gray
+}
  
