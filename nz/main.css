@@ -47,6 +47,14 @@ main figure {
 }
 main figcaption{
     float:left;
-    margin-left: -12.5em;
+    margin-left: -13em;
     width: 11.5em;
+}
+main figure img {
+    width: 90%;
+}
+#map {
+    height: 360px;
+    width: 90%;
+    border: 1px solid black;
 }
