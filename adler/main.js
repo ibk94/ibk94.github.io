@@ -37,37 +37,29 @@ pin2.bindPopup(titel2).openPopup();
 //Popup zum Pin hängen
 
 
-const blick1 = {
-    kunde: "Wilder Kaiser",
-    standort: "Gruttenhütte",
-    seehoehe: 1640,
-    lat: 47.55564,
-    lng: 12.31861 
-};
 
 
-const blick2 = {
-    kunde: "Bergbahn Scheffau",
-    standort: "Brandstadl",
-    seehoehe: 1640,
-    lat: 47.4912,
-    lng: 12.248 
-};
-
-
-const blick3 = {
-    kunde: "Lechtal Tourismus",
-    standort: "Sonnalm Jöchelspitze",
-    seehoehe: 1786,
-    lat: 47.275325,
-    lng: 10.364524
-};
-
-
-const adlerblicke = [
-    blick1,
-    blick2,
-    blick3
+const adlerblicke = [ {
+        kunde: "Wilder Kaiser",
+        standort: "Gruttenhütte",
+        seehoehe: 1640,
+        lat: 47.55564,
+        lng: 12.31861 
+    },
+    {
+        kunde: "Bergbahn Scheffau",
+        standort: "Brandstadl",
+        seehoehe: 1640,
+        lat: 47.4912,
+        lng: 12.248 
+    },
+    {
+        kunde: "Lechtal Tourismus",
+        standort: "Sonnalm Jöchelspitze",
+        seehoehe: 1786,
+        lat: 47.275325,
+        lng: 10.364524
+    }
 ] ;
 for (let blick of adlerblicke) {
 let blickpin = L.marker(
