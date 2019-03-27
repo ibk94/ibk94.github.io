@@ -37,13 +37,17 @@ pin2.bindPopup(titel2).openPopup();
 //Popup zum Pin hängen
 
 
+let blickeGruppe = L.featureGroup().addTo(karte)
+
 for (let blick of ADLERBLICKE) {
     let blickpin = L.marker(
         [blick.lat, blick.lng]
-    ).addTo(karte)
+    ).addTo(blickeGruppe)
     blickpin.bindPopup(
         `<h1>Standort: ${blick.standort}</h1>
         <p>Höhe: ${blick.seehoehe} m</p>
         <em>Kunde: ${blick.kunde} </em>`
     );
 }
+console.log(blickeGruppe.getBounds());
+karte.fitBounds(blickeGruppe.getBounds());
