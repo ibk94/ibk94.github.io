@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Adlerweg - </title><!-- TODO:Titel der Etappe -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="blicke.js"></script>
     <script defer src="main.js"></script>
 </head>
-    
+
 <body>
     <header>
         <h3>Adlerweg</h3>
@@ -22,79 +25,107 @@
     </header>
     <div class="author">
 
-                    <!-- TODO: ein div-Element mit der Klasse "author" -->
+        <!-- TODO: ein div-Element mit der Klasse "author" -->
 
         <!-- TODO: ein User-(Symbol)Bild mit 100x100 Pixel im Format JPG mit dem Namen user.jpg in einem Unterordner images/ -->
-       <figure>
-           <img src="images/user.jpg" alt="Profilbild des Benutzers">
-       </figure>
-    <p><address><a href="mailto:roman.merlot@student.uibk.ac.at">Mail Roman Merlot</a> <br>
-       <a href="https://github.com/ibk94/ibk94.github.io">Link zum github Repository</a></address></p>
-       
+        <figure>
+            <img src="images/user.jpg" alt="Profilbild des Benutzers">
+        </figure>
+        <p>
+            <address><a href="mailto:roman.merlot@student.uibk.ac.at">Mail Roman Merlot</a> <br>
+                <a href="https://github.com/ibk94/ibk94.github.io">Link zum github Repository</a></address>
+        </p>
+
     </div>
 
-             <!-- TODO: ein address-Element mit zwei Links -->
-            <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen-->
-            <!-- TODO: ein Link auf den eigenen github.com Account -->
+    <!-- TODO: ein address-Element mit zwei Links -->
+    <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen-->
+    <!-- TODO: ein Link auf den eigenen github.com Account -->
 
     <hr />
 
     <main>
-             <h1> Etappe 9 - Lamsenjochhütte - Karwendelhaus </h1>
-             Hinter dem bezaubernden Almdorf Eng (mit Schaukäserei) beginnt der breite Fußweg zur Falkenhütte. (Hinweis: Die Falkenhütte ist im Sommer 2018 und 2019 wegen Umbau geschlossen). Durch Wiesen und Mischwald geht es sanft hinauf zum Hohljoch auf 1.794 Meter. Obwohl man nicht gerne Höhenmeter verliert, leitet der Weg noch einmal abwärts auf 1.700 Meter durch die Laliderer Reisen. Das Auf und Ab ist hier vor allem fürs Auge reizvoll. Anschließend zieht der Weg sanft nach oben zum Spielissjoch und zur stattlichen Falkenhütte. Von hier führt der Weg weiter durch sanfte Almwiesen abwärts. Nach der beschaulichen Ladizalm geht es durch lichten Wald über einen Karrenweg hinunter zum Kleinen Ahornboden, der landschaftlich ebenso beeindruckt wie sein großer Bruder. Dann – man ist schließlich zum Bergsteigen hier unterwegs – schicken sich die Beine schnell wieder in den Bergauf-Schritt. In Richtung Nordwesten erreicht man das Untere Filztal, von wo aus noch 400 aussichtsreiche Höhenmeter bis zum Karwendelhaus zurückzulegen sind. <a href="https://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-09-10-lamsenjochhuette">Quelle:Tirol</a></p>
-             
-             
-             <!-- TODO: eine Überschrift 1 mit dem Titel der Etappe und einem kurzen "Teaser" -->
-        <!-- TODO: ein Absatz mit einem Einführungstext zur Etappe aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
-           <h2> Karwendelhaus </h2>
-            <figure>
-                    <figcaption> <i class="fas fa-camera"> </i><em>Ziel am Karwendelhaus <a href="https://commons.wikimedia.org/wiki/Category:Karwendelhaus#/media/File:Karwendelhaus_HQ.jpg">Quelle:Wikimedia</a></em></figcaption> 
-                    <img src="images/attraction.jpg" alt=" Berghütte am Berghang im Karwendel</em>" >
-             </figure>
+        <h1> Etappe 9 - Lamsenjochhütte - Karwendelhaus </h1>
+        Hinter dem bezaubernden Almdorf Eng (mit Schaukäserei) beginnt der breite Fußweg zur Falkenhütte. (Hinweis: Die
+        Falkenhütte ist im Sommer 2018 und 2019 wegen Umbau geschlossen). Durch Wiesen und Mischwald geht es sanft
+        hinauf zum Hohljoch auf 1.794 Meter. Obwohl man nicht gerne Höhenmeter verliert, leitet der Weg noch einmal
+        abwärts auf 1.700 Meter durch die Laliderer Reisen. Das Auf und Ab ist hier vor allem fürs Auge reizvoll.
+        Anschließend zieht der Weg sanft nach oben zum Spielissjoch und zur stattlichen Falkenhütte. Von hier führt der
+        Weg weiter durch sanfte Almwiesen abwärts. Nach der beschaulichen Ladizalm geht es durch lichten Wald über einen
+        Karrenweg hinunter zum Kleinen Ahornboden, der landschaftlich ebenso beeindruckt wie sein großer Bruder. Dann –
+        man ist schließlich zum Bergsteigen hier unterwegs – schicken sich die Beine schnell wieder in den
+        Bergauf-Schritt. In Richtung Nordwesten erreicht man das Untere Filztal, von wo aus noch 400 aussichtsreiche
+        Höhenmeter bis zum Karwendelhaus zurückzulegen sind. <a
+            href="https://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-09-10-lamsenjochhuette">Quelle:Tirol</a>
+        </p>
 
-            <p>Das Karwendelhaus (1.765 Meter Seehöhe) ist eine bestens ausgestattete Schutzhütte in der Nähe des Hochalmsattels im Karwendel, Tirol.
-                weniger anzeigen
-                
-                Komfortable Schutzhütte hoch über dem Karwendeltal
-                DAV-Hütte, Sektion Männer-Turnverein München
-                 
-                
-                Fast verschmilzt es optisch mit den Felsen, das Karwendelhaus vor der westlichen Ödkarspitze, in der Nähe des Hochalmsattels hoch über dem Karwendeltal. Im Jahr 1908 wurde es nach fünfjähriger Bauzeit eröffnet. Kein Wunder, dass es so lange dauerte, 4.000 Kubikmeter Gestein mussten mit Pickel und Dynamit beseitigt werden. Aber die Mühe der Pioniere hat sich gelohnt. Wegen ihrer zentralen Lage ist die inzwischen mit dem Umweltgütesiegel ausgezeichnete und auch einrichtungsmäßig bestens ausgestattete Schutzhütte für Bergsteiger ein wichtiger Stützpunkt bei mehrtägigen Karwendeltouren. Zudem ist sie ein beliebtes Ausflugsziel von Mountainbikern. In der über 100 Jahre alten, urgemütlichen Gaststube treffen sie alle zusammen. Bekannte Berge ringsum: Birkkarspitze, Westliche Karwendelspitze, Ödkarspitzen, Große Seekarspitze, Vogelkarspitze, Kuhkopf. <a href="https://www.tirol.at/reisefuehrer/sport/wandern/alpenvereinshuetten/a-karwendelhaus">Quelle:Tirol</a>
-            </p>
+
+        <!-- TODO: eine Überschrift 1 mit dem Titel der Etappe und einem kurzen "Teaser" -->
+        <!-- TODO: ein Absatz mit einem Einführungstext zur Etappe aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
+        <h2> Karwendelhaus </h2>
+        <figure>
+            <figcaption> <i class="fas fa-camera"> </i><em>Ziel am Karwendelhaus <a
+                        href="https://commons.wikimedia.org/wiki/Category:Karwendelhaus#/media/File:Karwendelhaus_HQ.jpg">Quelle:Wikimedia</a></em>
+            </figcaption>
+            <img src="images/attraction.jpg" alt=" Berghütte am Berghang im Karwendel</em>">
+        </figure>
+
+        <p>Das Karwendelhaus (1.765 Meter Seehöhe) ist eine bestens ausgestattete Schutzhütte in der Nähe des
+            Hochalmsattels im Karwendel, Tirol.
+            weniger anzeigen
+
+            Komfortable Schutzhütte hoch über dem Karwendeltal
+            DAV-Hütte, Sektion Männer-Turnverein München
+
+
+            Fast verschmilzt es optisch mit den Felsen, das Karwendelhaus vor der westlichen Ödkarspitze, in der Nähe
+            des Hochalmsattels hoch über dem Karwendeltal. Im Jahr 1908 wurde es nach fünfjähriger Bauzeit eröffnet.
+            Kein Wunder, dass es so lange dauerte, 4.000 Kubikmeter Gestein mussten mit Pickel und Dynamit beseitigt
+            werden. Aber die Mühe der Pioniere hat sich gelohnt. Wegen ihrer zentralen Lage ist die inzwischen mit dem
+            Umweltgütesiegel ausgezeichnete und auch einrichtungsmäßig bestens ausgestattete Schutzhütte für Bergsteiger
+            ein wichtiger Stützpunkt bei mehrtägigen Karwendeltouren. Zudem ist sie ein beliebtes Ausflugsziel von
+            Mountainbikern. In der über 100 Jahre alten, urgemütlichen Gaststube treffen sie alle zusammen. Bekannte
+            Berge ringsum: Birkkarspitze, Westliche Karwendelspitze, Ödkarspitzen, Große Seekarspitze, Vogelkarspitze,
+            Kuhkopf. <a
+                href="https://www.tirol.at/reisefuehrer/sport/wandern/alpenvereinshuetten/a-karwendelhaus">Quelle:Tirol</a>
+        </p>
         <!-- TODO: eine Überschrift 2 einer Sehenswürdigkeit der Etappe-->
         <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
         <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
 
         <h3>Übersichtskarte</h3>
-       <div id="map" data-lat2="47.38" data-lng2="11.603333" data-title2="Lamsenjochhütte" data-lat1="47.4269" data-lng1="11.4217" data-title1="Karwendelhaus"></div>
-        
+        <div id="map" data-lat2="47.38" data-lng2="11.603333" data-title2="Lamsenjochhütte" data-lat1="47.4269"
+            data-lng1="11.4217" data-title1="Karwendelhaus"></div>
+
         <!-- TODO: ein div-Element mit dem id-Attribut "map" und drei weiteren Attributen data-lat, data-lng und data-title. Die Koordinaten von data-lat und data-lng sind als Dezimalgrad mit einem "." als Komma zu schreiben und aus der Wikipedia zu entnehmen. Das data-title Attribut enthält einen Titel für die oben verwendete Sehenswürdigkeit
         -->
 
         <h3>Links</h3>
         <!-- TODO: 4 Links zu Seiten im Netz die zur Etappe/Sehenswürdigkeit passen als ungeordnete Liste -->
-       <ul>
-        <li><a href="https://www.tirol.at/reisefuehrer/sport/wandern/adlerweg">Adlerweg</a>  </li> 
-        <li><a href="https://www.tirol.at/reisefuehrer/sport/wandern/alpenvereinshuetten/a-lamsenjochhuette">Lamsenjochhütte</a>  </li> 
-       <li><a href="https://www.tirol.at/reisefuehrer/sport/wandern/alpenvereinshuetten/a-karwendelhaus">Karwendelhaus</a></li>   
-       <li><a href="https://karwendelhaus.com/portfolio-items/wetter-karwendelhaus/">Wetter Karwendelhaus</a></li>   
-      
+        <ul>
+            <li><a href="https://www.tirol.at/reisefuehrer/sport/wandern/adlerweg">Adlerweg</a> </li>
+            <li><a
+                    href="https://www.tirol.at/reisefuehrer/sport/wandern/alpenvereinshuetten/a-lamsenjochhuette">Lamsenjochhütte</a>
+            </li>
+            <li><a
+                    href="https://www.tirol.at/reisefuehrer/sport/wandern/alpenvereinshuetten/a-karwendelhaus">Karwendelhaus</a>
+            </li>
+            <li><a href="https://karwendelhaus.com/portfolio-items/wetter-karwendelhaus/">Wetter Karwendelhaus</a></li>
+
         </ul>
     </main>
 
     <hr />
 
     <footer>
-       
-        <nav class="back">  <a href="https://nicometz.github.io/adler/index.html"> <i class="fas fa-arrow-circle-left"> </i>Etappe 8 </a></nav>
-        <nav class="next">  <a href="https://summerandreas.github.io/adler/">Etappe 10 <i class="fas fa-arrow-circle-right"></i>  </a> </nav>
+
+        <nav class="back"> <a href="https://nicometz.github.io/adler/index.html"> <i class="fas fa-arrow-circle-left">
+                </i>Etappe 8 </a></nav>
+        <nav class="next"> <a href="https://summerandreas.github.io/adler/">Etappe 10 <i
+                    class="fas fa-arrow-circle-right"></i> </a> </nav>
         <!-- TODO: ein nav-Element mit zwei Links auf die vorherige Etappe und die nächste Etappe mit den Klassen "back" und "next" sowie den Link-Texten "vorhergehender Stop" und "nächster Stop". Die Links verweisen auf die entsprechenden Etappen in der Form https://username.github.io/nz/index.html -->
     </footer>
 
 </body>
 
 </html>
-
-
-
-
