@@ -14,11 +14,6 @@ const titel2 = div.getAttribute("data-title2");
 let karte = L.map("map");
 //console.log(karte);
 
-// auf Ausschnitt zoomen
-karte.setView(
-    [47.2, 11.2],
-    8
-);
 
 // open street map einbauen
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
@@ -51,3 +46,4 @@ for (let blick of ADLERBLICKE) {
 }
 console.log(blickeGruppe.getBounds());
 karte.fitBounds(blickeGruppe.getBounds());
+ // Zoome der Karte durch Blcikegruppe definieren
