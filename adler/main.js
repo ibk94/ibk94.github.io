@@ -45,7 +45,37 @@ const blick1 = {
     lng: 12.31861 
 };
 
-let pin3 = L.marker(
-    [blick1.lat,blick1.lng]
-).addTo(karte);
 
+const blick2 = {
+    kunde: "Bergbahn Scheffau",
+    standort: "Brandstadl",
+    seehoehe: 1640,
+    lat: 47.4912,
+    lng: 12.248 
+};
+
+
+const blick3 = {
+    kunde: "Lechtal Tourismus",
+    standort: "Sonnalm Jöchelspitze",
+    seehoehe: 1786,
+    lat: 47.275325,
+    lng: 10.364524
+};
+
+
+const adlerblicke = [
+    blick1,
+    blick2,
+    blick3
+] ;
+for (let blick of adlerblicke) {
+let blickpin = L.marker(
+    [blick.lat, blick.lng]
+).addTo(karte)
+blickpin.bindPopup(
+    `<h1>Standort: ${blick.standort}</h1>
+        <p>Höhe: ${blick.seehoehe} m</p>
+        <em>Kunde: ${blick.kunde} </em>`
+);
+}
