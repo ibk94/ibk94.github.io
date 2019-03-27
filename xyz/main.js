@@ -16,8 +16,8 @@ let karte = L.map("map");
  
 // auf Ausschnitt zoomen
 karte.setView(
-    [breite1,laenge1],
-    11
+    [47.2, 11.2],
+    8
 );
 
 // open street map einbauen
@@ -35,4 +35,17 @@ let pin2 = L.marker(
 ).addTo(karte);
 pin2.bindPopup(titel2).openPopup();
 //Popup zum Pin hängen
+
+
+const blick1 = {
+    kunde: "Wilder Kaiser",
+    standort: "Gruttenhütte",
+    seehoehe: 1640,
+    lat: 47.55564,
+    lng: 12.31861 
+};
+
+let pin3 = L.marker(
+    [blick1.lat,blick1.lng]
+).addTo(karte);
 
