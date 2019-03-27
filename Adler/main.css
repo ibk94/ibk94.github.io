@@ -19,12 +19,12 @@ body {
  
  header h3 {
     font-size: 2em;
-    color: rgb(42, 45, 221);
+    color: white;
  }
  
  header h4 {
     font-size: 0.75em;
-    color: rgb(42, 45, 221);
+    color: white;
  }
  .author {
      text-align: center;
