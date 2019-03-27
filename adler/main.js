@@ -37,7 +37,7 @@ pin2.bindPopup(titel2).openPopup();
 //Popup zum Pin hängen
 
 
-for (let blick of adlerblicke) {
+for (let blick of ADLERBLICKE) {
     let blickpin = L.marker(
         [blick.lat, blick.lng]
     ).addTo(karte)
