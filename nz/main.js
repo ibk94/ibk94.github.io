@@ -10,10 +10,10 @@ const titel = div.getAttribute("data-title");
 //  Karte initialisieren
 let karte = L.map("map");
 //console.log(karte);
- 
+
 // auf Ausschnitt zoomen
 karte.setView(
-    [breite,laenge],
+    [breite, laenge],
     13
 );
 
@@ -22,7 +22,7 @@ L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
 
 //Positionsmarker hinzufügen
 let pin = L.marker(
-    [breite,laenge]
+    [breite, laenge]
 ).addTo(karte);
 
 //Popup zum Pin hängen
