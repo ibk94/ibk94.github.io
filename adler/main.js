@@ -44,6 +44,6 @@ for (let blick of ADLERBLICKE) {
         <em>Kunde: ${blick.kunde} </em>`
     );
 }
-console.log(blickeGruppe.getBounds());
+//console.log(blickeGruppe.getBounds());
 karte.fitBounds(blickeGruppe.getBounds());
  // Zoome der Karte durch Blcikegruppe definieren
