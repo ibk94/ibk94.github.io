@@ -46,4 +46,4 @@ for (let blick of ADLERBLICKE) {
 }
 //console.log(blickeGruppe.getBounds());
 karte.fitBounds(blickeGruppe.getBounds());
- // Zoome der Karte durch Blcikegruppe definieren
+// Zoome der Karte durch Blcikegruppe definieren
