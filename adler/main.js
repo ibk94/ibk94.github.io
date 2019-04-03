@@ -16,12 +16,15 @@ let karte = L.map("map");
 
 
 // open street map einbauen
-L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png",{
-    subdomains :["a","b","c"],
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-}).addTo(karte);
+//L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png",{
+   // subdomains :["a","b","c"],
+    // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+//}).addTo(karte);
 
-"https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png"
+L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png",{
+subdomains : ["maps","maps1","maps2","maps3","maps4"],
+attribution : 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
+}).addTo(karte);
 
 //Positionsmarker hinzufügen
 let pin1 = L.marker(
