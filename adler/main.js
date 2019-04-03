@@ -127,7 +127,10 @@ for (let blick of ADLERBLICKE) {
     );
 }
 //console.log(blickeGruppe.getBounds());
+// Zoome der Karte durch Blcikegruppe definieren
+//Systeme in Karte einbinden
 karte.fitBounds(blickeGruppe.getBounds());
 karte.addControl(new L.Control.Fullscreen());
 var hash = new L.Hash(karte);
-// Zoome der Karte durch Blcikegruppe definieren
+var coords = new L.Control.Coordinates();
+coords.addTo(karte);
