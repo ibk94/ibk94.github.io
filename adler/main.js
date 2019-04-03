@@ -47,6 +47,18 @@ const kartenlayer = {
         subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
         attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
     }),
+    stamen_toner : L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png", {
+    subdomains : ["a","b","c"],
+    attribution : 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>'
+}),
+stamen_terrain : L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg", {
+    subdomains : ["a","b","c"],
+    attribution : 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>'
+}),
+stamen_watercolor : L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg", {
+    subdomains : ["a","b","c"],
+    attribution : 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>'
+}),
 };
 
 
@@ -56,6 +68,11 @@ const kartenlayer = {
 // subdomains :["a","b","c"],
 // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 //}).addTo(karte);
+
+
+
+
+
 //eine Karte muss zumindest in die Karte
 kartenlayer.geolandbasemap.addTo(karte);
 // SChleife zum Öffnen der Karten
@@ -68,6 +85,9 @@ L.control.layers({
     "Geoland Basemap Orthofoto" : kartenlayer.bmaporthofoto30cm,
     "Geoland Basemap Gelände" : kartenlayer.bmapgelaende,
     "Geoland Basemap Oberfläche" : kartenlayer.bmapoberflaeche,
+    "Stamen Toner" : kartenlayer.stamen_toner,
+    "Stamen Terrain" : kartenlayer.stamen_terrain,
+    "Stamen Watercoler" : kartenlayer.stamen_watercolor
 }).addTo(karte);
 
 //verschiedene Karten einladen
