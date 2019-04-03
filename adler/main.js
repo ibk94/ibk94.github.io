@@ -130,7 +130,13 @@ for (let blick of ADLERBLICKE) {
 // Zoome der Karte durch Blcikegruppe definieren
 //Systeme in Karte einbinden
 karte.fitBounds(blickeGruppe.getBounds());
+//Vollbildmodus
 karte.addControl(new L.Control.Fullscreen());
+//Karte bleibt bei einer Stelle
 var hash = new L.Hash(karte);
+//Koordinaten werden angezeigt
 var coords = new L.Control.Coordinates();
 coords.addTo(karte);
+karte.on('click', function(e) {
+	coords.setCoordinates(e);
+});
