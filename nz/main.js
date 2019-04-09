@@ -114,4 +114,4 @@ karte.on('click', function(e) {
 });
 
 //Popup zum Pin hängen
-pin.bindPopup(titel).openPopup();
+//pin.bindPopup(titel).openPopup();
