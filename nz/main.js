@@ -42,10 +42,10 @@ const kartenlayer = {
 
 
 // auf Ausschnitt zoomen
-karte.setView(
-    [breite, laenge],
-    13
-);
+//karte.setView(
+ //   [breite, laenge],
+ //   13
+//);
 
 // open street map einbauen
 //L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
@@ -61,9 +61,9 @@ L.control.layers({
 }).addTo(karte);
 
 //Positionsmarker hinzufügen
-let pin = L.marker(
-   [breite, laenge]
-).addTo(karte);
+//let pin = L.marker(
+//   [breite, laenge]
+//).addTo(karte);
 
 //Systeme in Karte einbinden
 //karte.fitBounds(blickeGruppe.getBounds());
