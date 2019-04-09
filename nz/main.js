@@ -20,38 +20,7 @@ let karte = L.map("map");
 //console.log(karte);
 
 const kartenlayer = {
-    osm: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    geolandbasemap: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    bmapoverlay: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    bmapgrau: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    bmaphidpi: L.tileLayer("https://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    bmaporthofoto30cm: L.tileLayer("https://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    bmapgelaende: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapgelaende/grau/google3857/{z}/{y}/{x}.jpeg", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
-    bmapoberflaeche: L.tileLayer("https://{s}.wien.gv.at/basemap/bmapoberflaeche/grau/google3857/{z}/{y}/{x}.jpeg", {
-        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
-        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
-    }),
+
     stamen_toner: L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png", {
         subdomains: ["a", "b", "c"],
         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>'
@@ -79,17 +48,9 @@ const kartenlayer = {
 //L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
 
 //eine Karte muss zumindest in die Karte
-kartenlayer.geolandbasemap.addTo(karte);
+kartenlayer.stamen_toner.addTo(karte);
 // SChleife zum Öffnen der Karten
 L.control.layers({
-    "Geoland Basemap": kartenlayer.geolandbasemap,
-    "Geoland Basempa Grau": kartenlayer.bmapgrau,
-    "OpenStreetMap": kartenlayer.osm,
-    "Geoland Basemap Overlay": kartenlayer.bmapoverlay,
-    "Basemap High DPI": kartenlayer.bmaphidpi,
-    "Geoland Basemap Orthofoto": kartenlayer.bmaporthofoto30cm,
-    "Geoland Basemap Gelände": kartenlayer.bmapgelaende,
-    "Geoland Basemap Oberfläche": kartenlayer.bmapoberflaeche,
     "Stamen Toner": kartenlayer.stamen_toner,
     "Stamen Terrain": kartenlayer.stamen_terrain,
     "Stamen Watercoler": kartenlayer.stamen_watercolor
@@ -101,7 +62,7 @@ L.control.layers({
 //).addTo(karte);
 
 //Systeme in Karte einbinden
-karte.fitBounds(blickeGruppe.getBounds());
+//karte.fitBounds(blickeGruppe.getBounds());
 //Vollbildmodus
 karte.addControl(new L.Control.Fullscreen());
 //Karte bleibt bei einer Stelle
