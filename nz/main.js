@@ -42,16 +42,16 @@ const kartenlayer = {
 
 
 // auf Ausschnitt zoomen
-//karte.setView(
-//    [breite, laenge],
-//    13
-//);
+karte.setView(
+    [breite, laenge],
+    13
+);
 
 // open street map einbauen
 //L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
 
 //eine Karte muss zumindest in die Karte
-kartenlayer.stamen_toner.addTo(karte);
+kartenlayer.osm.addTo(karte);
 // SChleife zum Öffnen der Karten
 L.control.layers({
     "Stamen Toner": kartenlayer.stamen_toner,
@@ -61,9 +61,9 @@ L.control.layers({
 }).addTo(karte);
 
 //Positionsmarker hinzufügen
-//let pin = L.marker(
-  //  [breite, laenge]
-//).addTo(karte);
+let pin = L.marker(
+   [breite, laenge]
+).addTo(karte);
 
 //Systeme in Karte einbinden
 //karte.fitBounds(blickeGruppe.getBounds());
