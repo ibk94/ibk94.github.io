@@ -20,6 +20,9 @@ let karte = L.map("map");
 //console.log(karte);
 
 const kartenlayer = {
+    osm: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
+        attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
 
     stamen_toner: L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png", {
         subdomains: ["a", "b", "c"],
@@ -52,6 +55,7 @@ kartenlayer.stamen_toner.addTo(karte);
 // SChleife zum Öffnen der Karten
 L.control.layers({
     "Stamen Toner": kartenlayer.stamen_toner,
+    "OpenStreetMap": kartenlayer.osm,
     "Stamen Terrain": kartenlayer.stamen_terrain,
     "Stamen Watercoler": kartenlayer.stamen_watercolor
 }).addTo(karte);
