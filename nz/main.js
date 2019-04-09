@@ -1,23 +1,30 @@
 /*Skript für Neuseelandreise; */
 
-const div = document.getElementById("map");
-const breite1 = div.getAttribute("data-lat1");
-const laenge1 = div.getAttribute("data-lng1");
-const titel1 = div.getAttribute("data-title1");
-const breite2 = div.getAttribute("data-lat2");
-const laenge2 = div.getAttribute("data-lng2");
-const titel2 = div.getAttribute("data-title2");
-
 //const div = document.getElementById("map");
-//const breite = div.getAttribute("data-lat");
-//const laenge = div.getAttribute("data-lng");
-//const titel = div.getAttribute("data-title");
+//const breite1 = div.getAttribute("data-lat1");
+//const laenge1 = div.getAttribute("data-lng1");
+//const titel1 = div.getAttribute("data-title1");
+//const breite2 = div.getAttribute("data-lat2");
+//const laenge2 = div.getAttribute("data-lng2");
+//const titel2 = div.getAttribute("data-title2");
+
+const div = document.getElementById("map");
+const breite = div.getAttribute("data-lat");
+const laenge = div.getAttribute("data-lng");
+const titel = div.getAttribute("data-title");
 
 //console.log("Breite=",breite,"Länge=",laenge,"Title=",titel);
 
 //  Karte initialisieren
 let karte = L.map("map");
 //console.log(karte);
+
+// auf Ausschnitt zoomen
+karte.setView(
+   [breite, laenge],
+   13
+);
+
 
 const kartenlayer = {
     osm: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
@@ -41,11 +48,6 @@ const kartenlayer = {
 
 
 
-// auf Ausschnitt zoomen
-//karte.setView(
- //   [breite, laenge],
- //   13
-//);
 
 // open street map einbauen
 //L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(karte);
@@ -61,9 +63,9 @@ L.control.layers({
 }).addTo(karte);
 
 //Positionsmarker hinzufügen
-//let pin = L.marker(
-//   [breite, laenge]
-//).addTo(karte);
+let pin = L.marker(
+  [breite, laenge]
+).addTo(karte);
 
 //Systeme in Karte einbinden
 //karte.fitBounds(blickeGruppe.getBounds());
@@ -79,4 +81,4 @@ karte.on('click', function(e) {
 });
 
 //Popup zum Pin hängen
-//pin.bindPopup(titel).openPopup();
+pin.bindPopup(titel).openPopup();
