@@ -73,20 +73,24 @@ L.control.layers({
     //  [47,11],13
 //)
 
+let positionsMarker = L.marker([47,11]).addTo(karte);
+
 karte.locate({
     setView : true,
     maxZoom : 18,
+    watch : true,
 });
 
 karte.on("locationfound", function(event){
     console.log(event);
-    L.marker([event.latitude, event.longitude
-    ]).addTo(karte);
-    L.circle([event.latlng.lat, event.latlng.lng], {
-        radius: event.accuracy/2
-    }).addTo(karte);
+   // L.marker([event.latitude, event.longitude
+    //]).addTo(karte);
+    //L.circle([event.latlng.lat, event.latlng.lng], {
+   //     radius: event.accuracy/2
+    positionsMarker.setLatLng(event.latlng)    
+    //}).addTo(karte);
 });
 
-karte.on("locationfound", function(event) {
+karte.on("locationerror", function(event) {
     alert("Leider keinen Standort gefunden")
 });
