@@ -1,10 +1,3 @@
-const div = document.getElementById("map");
-const breite1 = div.getAttribute("data-lat1");
-const laenge1 = div.getAttribute("data-lng1");
-const titel1 = div.getAttribute("data-title1");
-const breite2 = div.getAttribute("data-lat2");
-const laenge2 = div.getAttribute("data-lng2");
-const titel2 = div.getAttribute("data-title2");
 
 //console.log("Breite=",breite,"Länge=",laenge,"Title=",titel);
 
@@ -76,14 +69,6 @@ L.control.layers({
     "Stamen Watercoler": kartenlayer.stamen_watercolor
 }).addTo(karte);
 
-karte.fitBounds(blickeGruppe.getBounds());
-//Vollbildmodus
-karte.addControl(new L.Control.Fullscreen());
-//Karte bleibt bei einer Stelle
-var hash = new L.Hash(karte);
-//Koordinaten werden angezeigt
-var coords = new L.Control.Coordinates();
-coords.addTo(karte);
-karte.on('click', function(e) {
-	coords.setCoordinates(e);
-});
+karte.setView(
+    [47,11],13
+)
