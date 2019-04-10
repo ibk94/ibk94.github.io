@@ -88,7 +88,7 @@ for (let statte of SPORT) {
     console.log(statte)
     // piktogramm einbinden bzw definiteren
     let piktogramm = L.icon({
-        iconUrl: `icons/icon_${statte.icons}_schwarz_auf_weis_250px.png`
+        iconUrl: `icons/icon_${statte.icons}_schwarz_auf_weiss_250px.png`
     });
     // Marker zeichen
     let positionsMarker = L.marker(
@@ -101,4 +101,4 @@ for (let statte of SPORT) {
         `<h3>${statte.name}</h3>
         <p>${statte.typ}</p>`
     )
-}
+};
