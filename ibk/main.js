@@ -86,3 +86,7 @@ karte.on("locationfound", function(event){
         radius: event.accuracy/2
     }).addTo(karte);
 });
+
+karte.on("locationfound", function(event) {
+    alert("Leider keinen Standort gefunden")
+}),
