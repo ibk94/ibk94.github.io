@@ -21,8 +21,8 @@ let karte = L.map("map");
 
 // auf Ausschnitt zoomen
 karte.setView(
-   [breite, laenge],
-   13
+    [breite, laenge],
+    13
 );
 
 
@@ -64,7 +64,7 @@ L.control.layers({
 
 //Positionsmarker hinzufügen
 let pin = L.marker(
-  [breite, laenge]
+    [breite, laenge]
 ).addTo(karte);
 
 //Systeme in Karte einbinden
@@ -76,8 +76,8 @@ var hash = new L.Hash(karte);
 //Koordinaten werden angezeigt
 var coords = new L.Control.Coordinates();
 coords.addTo(karte);
-karte.on('click', function(e) {
-	coords.setCoordinates(e);
+karte.on('click', function (e) {
+    coords.setCoordinates(e);
 });
 
 //Popup zum Pin hängen
