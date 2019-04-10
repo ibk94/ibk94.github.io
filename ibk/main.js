@@ -5,7 +5,7 @@
 let karte = L.map("map");
 
 const kartenlayer= {
-    {
+    
         osm: L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
             subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
             attribution: 'Datenquelle: <a href= "https://www.basemap.at">basemap.at</a>'
