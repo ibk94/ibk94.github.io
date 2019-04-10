@@ -89,4 +89,4 @@ karte.on("locationfound", function(event){
 
 karte.on("locationfound", function(event) {
     alert("Leider keinen Standort gefunden")
-}),
+});
