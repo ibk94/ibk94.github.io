@@ -73,7 +73,7 @@ karte.setView(
       [47.267222,11.392778],13
 )
 
-let positionsMarker = L.marker([47,11]).addTo(karte);
+//let positionsMarker = L.marker([47,11]).addTo(karte);
 
 //karte.locate({
    // setView : true,
@@ -82,6 +82,7 @@ let positionsMarker = L.marker([47,11]).addTo(karte);
 //});
 
 console.log(SPORT)
+
 
 for ( let statte of SPORT){
     console.log(statte)
@@ -93,3 +94,15 @@ for ( let statte of SPORT){
         <p>${statte.typ}</p>`
     )
 }
+
+// piktogramm einbinden bzw definiteren
+let piktogramm = L.Icon({
+    iconUrl : `icons/icon_${statte.icon}_schwarz_auf_weis_250px.png`
+});
+
+// Marker zeichen
+let positionsMarker = L.marker(
+    [statte.lat, statte.lng], {
+        icon :piktogramm
+    }
+).addTo(karte);
