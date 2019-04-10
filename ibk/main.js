@@ -75,8 +75,21 @@ karte.setView(
 
 let positionsMarker = L.marker([47,11]).addTo(karte);
 
-karte.locate({
-    setView : true,
-    maxZoom : 18,
+//karte.locate({
+   // setView : true,
+    // maxZoom : 18,
     //watch : true,
-});
+//});
+
+console.log(SPORT)
+
+for ( let statte of SPORT){
+    console.log(statte)
+    let positionsMarker = L.marker (
+        [statte.lat, statte.lng]
+    ).addTo(karte);
+    positionsMarker.bindPopup(
+        `<h3>${statte.name}</h3>
+        <p>${statte.typ}</p>`
+    )
+}
