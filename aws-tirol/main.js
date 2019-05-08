@@ -130,7 +130,7 @@ async function loadStations() {
                 }
                 return L.marker(latlng, {
                     icon: L.divIcon({
-                        html: `<div class= "temperaturLabel" style="color:${color}">${feature.properties.LT}</div>`
+                        html: `<div class= "temperaturLabel" style="background-color: ${color}">${feature.properties.LT}</div>`
                     })
                 });
             }
