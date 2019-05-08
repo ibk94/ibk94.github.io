@@ -69,4 +69,36 @@ L.control.layers({
 }).addTo(karte);
 
 karte.setView(
-    [47.267222, 11.392778], 20);
+    [47.267222, 11.392778], 13
+)
+
+//let positionsMarker = L.marker([47,11]).addTo(karte);
+
+//karte.locate({
+// setView : true,
+// maxZoom : 18,
+//watch : true,
+//});
+
+console.log(SPORT)
+
+
+
+for (let statte of SPORT) {
+    console.log(statte)
+    // piktogramm einbinden bzw definiteren
+    let piktogramm = L.icon({
+        iconUrl: `icons/icon_${statte.icons}_schwarz_auf_weiss_250px.png`
+    });
+    // Marker zeichen
+    let positionsMarker = L.marker(
+        [statte.lat, statte.lng], {
+            icon: piktogramm
+        }
+    ).addTo(karte);
+
+    positionsMarker.bindPopup(
+        `<h3>${statte.name}</h3>
+        <p>${statte.typ}</p>`
+    )
+};
