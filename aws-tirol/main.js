@@ -126,7 +126,9 @@ async function loadStations() {
     const temperaturLayer = L.featureGroup();
     const farbPalette = [
         [0, "blue"],
-        [0.1, "red"]
+        [1, "yellow"],
+        [5, "orange"],
+        [10, "red"],
     ]
 
     L.geoJson(stations, {
