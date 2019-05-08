@@ -103,9 +103,13 @@ async function loadStations() {
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
             if (feature.properties.WR) {
+                let color = "black";
+                if (feature.properties.WG > 20){
+                    color = "red";
+                }
                 return L.marker(latlng, {
                     icon: L.divIcon({
-                        html: `<i style= "transform: rotate(${feature.properties.WR}deg)" class="fas fa-arrow-circle-up fa-2x"></i>`
+                        html: `<i style= "color: ${color};"transform: rotate(${feature.properties.WR}deg)" class="fas fa-arrow-circle-up fa-2x"></i>`
                     })
                 });
             }
