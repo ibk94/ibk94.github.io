@@ -76,14 +76,14 @@ karte.setView(
 
 //Livedaten vom Server ziehen
 
-async function loadStations(){
-    const response= await fetch("https://aws.openweb.cc/stations");
+async function loadStations() {
+    const response = await fetch("https://aws.openweb.cc/stations");
     const stations = await response.json();
     const awsTirol = L.featureGroup();
     L.geoJson(stations)
-        .bindPopup(function(layer){
+        .bindPopup(function (layer) {
             //console.log("Layer",layer);
-            const date= new Date(layer.feature.properties.date);
+            const date = new Date(layer.feature.properties.date);
             console.log("Datum:", date);
             return `<h4>${layer.feature.properties.name}</h4>
             Höhe (m): ${layer.feature.geometry.coordinates[2]}<br>
@@ -94,13 +94,25 @@ async function loadStations(){
             <hr>
             <footer>Quelle: Land Tirol - <a href="https://data.tirol.gv.at">data.tirol.gv.at</a></footer>
             `;
-             })
-.addTo(awsTirol);
-awsTirol.addTo(karte);
-karte.fitBounds(awsTirol.getBounds());
-   layerControl.addOverlay(awsTirol, "Wetterstationen Tirol") ;
- }
+        })
+        .addTo(awsTirol);
+    // awsTirol.addTo(karte);
+    karte.fitBounds(awsTirol.getBounds());
+    layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
+    const windLayer = L.featureGroup();
+    L.geoJson(stations, {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties.WR) {
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+                        html: `<i style= "transform: rotate(${feature.properties.WR}deg)" class="fas fa-arrow-circle-up fa-2x"></i>`
+                    })
+                });
+            }
+        }
+    }).addTo(windLayer);
+    layerControl.addOverlay(windLayer, "Windrichtung");
+    windLayer.addTo(karte);
+}
 
 loadStations();
-
-
