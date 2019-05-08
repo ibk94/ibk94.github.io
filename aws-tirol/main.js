@@ -118,7 +118,7 @@ async function loadStations() {
         }
     }).addTo(windLayer);
     layerControl.addOverlay(windLayer, "Windrichtung");
-    windLayer.addTo(karte);
+    //windLayer.addTo(karte);
 
     const temperaturLayer = L.featureGroup();
     L.geoJson(stations, {
@@ -130,7 +130,7 @@ async function loadStations() {
                 }
                 return L.marker(latlng, {
                     icon: L.divIcon({
-                        html: `<div style="color:${color}">${feature.properties.LT}</div>`
+                        html: `<div class= "temperaturLabel" style="color:${color}">${feature.properties.LT}</div>`
                     })
                 });
             }
