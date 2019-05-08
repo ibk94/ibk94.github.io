@@ -99,6 +99,8 @@ async function loadStations() {
     // awsTirol.addTo(karte);
     karte.fitBounds(awsTirol.getBounds());
     layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
+    //Windrichtungen einrichten
+
     const windLayer = L.featureGroup();
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
@@ -117,6 +119,25 @@ async function loadStations() {
     }).addTo(windLayer);
     layerControl.addOverlay(windLayer, "Windrichtung");
     windLayer.addTo(karte);
+
+    const temperaturLayer = L.featureGroup();
+    L.geoJson(stations, {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties.LT) {
+                let color = "blue";
+                if (feature.properties.LT > 0) {
+                    color = "red";
+                }
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+                        html: `<div style="color:${color}">${feature.properties.LT}</div>`
+                    })
+                });
+            }
+        }
+    }).addTo(temperaturLayer);
+    layerControl.addOverlay(temperaturLayer, "Temperatur");
+    temperaturLayer.addTo(karte);
 }
 
 loadStations();
