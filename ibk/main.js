@@ -69,5 +69,4 @@ L.control.layers({
 }).addTo(karte);
 
 karte.setView(
-    [47.267222, 11.392778], 15
-)
+    [47.267222, 11.392778], 15);
