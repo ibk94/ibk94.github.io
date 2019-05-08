@@ -71,3 +71,15 @@ L.control.layers({
 karte.setView(
     [47.267222, 11.392778], 15
 )
+
+
+const awsTirol = L.featureGroup();
+L.geoJson(AWS)
+    .bindPopup(function(layer){
+        console.log("Layer",layer);
+        return `Temperatur: ${layer.feature.properties.LT} °C <br>
+        Datum: ${layer.feature.properties.date}`;
+    })
+    .addTo(awsTirol);
+awsTirol.addTo(karte);
+karte.fitBounds(awsTirol.getBounds());
