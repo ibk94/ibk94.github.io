@@ -262,7 +262,7 @@ async function loadStations() {
         }
     }).addTo(relativhumidity);
     layerControl.addOverlay(relativhumidity, "Relative Feuchte");
-    relativhumidity.addTo(karte);
+    //relativhumidity.addTo(karte);
 }
 
 loadStations();
