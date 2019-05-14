@@ -109,20 +109,20 @@ async function loadStations() {
 
     const farbPalette_Wind = [
 
-        [2.99, "#00b900"],
-        [3.99, "#10cd24"],
-        [5.99, "#72d475"],
-        [6, "#fed6d3"],
-        [7, "#ffb6b3"],
-        [8, "#ff9e9a"],
-        [9, "#ff8281"],
-        [10, "#ff6160"],
-        [11, "#ff453c"],
-        [11.1, "#ff200e"],
+        [11, "#00b900"],
+        [28, "#10cd24"],
+        [38, "#72d475"],
+        [49, "#fed6d3"],
+        [61, "#ffb6b3"],
+        [74, "#ff9e9a"],
+        [88, "#ff8281"],
+        [102, "#ff6160"],
+        [117, "#ff453c"],
+        [999, "#ff200e"],
     ]
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
-            if (feature.properties.WR / 1.852) {
+            if (feature.properties.WR) {
                 let color = "black";
                 if (feature.properties.WG > 20) {
                     color = "red";
