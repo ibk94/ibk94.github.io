@@ -201,10 +201,15 @@ async function loadStations() {
 
     const relativhumidity = L.featureGroup();
     const farbPalette_feuchte = [
-        [0, "blue"],
-        [1, "yellow"],
-        [5, "orange"],
-        [10, "red"],
+       
+        [30, "#EEE"],
+        [40, "#DDD"],
+        [50, "#C6C9CE"],
+        [60, "#BBB"],
+        [70, "#AAC"],
+        [80, "#9998DD"],
+        [90, "#8788EE"],
+        [100, "#7677E1"],
     ];
 
     L.geoJson(stations, {
