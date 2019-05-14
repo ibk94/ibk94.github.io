@@ -160,6 +160,45 @@ async function loadStations() {
     temperaturLayer.addTo(karte);
 }
 
+// realtive Feuchte
+
+const relativhumidity = L.featureGroup();
+const farbPalette = [
+    [0, "blue"],
+    [1, "yellow"],
+    [5, "orange"],
+    [10, "red"],
+]
+
+L.geoJson(stations, {
+    pointToLayer: function (feature, latlng) {
+        if (feature.properties.RH) {
+            let color = "red";
+            for (let i = 0; i < farbPalette.length; i++) {
+                console.log(farbPalette[i], feature.properties.RH);
+                if (feature.properties.RH < farbPalette[i][0]) {
+                    color = farbPalette[i][1];
+                    break;
+                }
+            }
+
+
+            //let color = "blue";
+            //if (feature.properties.LT > 0) {
+            //    color = "red";
+            // }
+            return L.marker(latlng, {
+                icon: L.divIcon({
+                    html: `<div class= "temperaturLabel" style="background-color: ${color}">${feature.properties.RH}</div>`
+                })
+            });
+        }
+    }
+}).addTo(relativhumidity);
+layerControl.addOverlay(relativhumidity, "Relative Feuchte");
+relativhumidity.addTo(karte);
+}
+
 loadStations();
 
 //Farbpalette Wetter online
