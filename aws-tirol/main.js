@@ -129,60 +129,44 @@ async function loadStations() {
     const temperaturLayer = L.featureGroup();
     const farbPalette_Temp = [
     
-    [-30, #646664]
-    [-28, #8c8a8c]
-    [-26, #b4b2b4] 
-    [-24, #cccecc]
-    [-22, #e4e6e4]
-    }.st10 {
-        fill: #772d76}.st11{fill:# b123b0
-    }.st12 {
-        fill: #d219d1
-    }.st13 {
-        fill: #f0f
-    }.st14 {
-        fill: #ff94ff
-    }.st15 {
-        fill: #3800d1}.st16{fill:# 325 afe
-    }.st17 {
-        fill: #2695ff}.st18{fill:# 00 cdff
-    }.st19 {
-        fill: #007800}.st20{fill:# 009 d00
-    }.st21 {
-        fill: #00bc02}.st22{fill:# 00e200
-    }.st23 {
-        fill: #0f0}.st24{fill:# fcff00
-    }.st25 {
-        fill: #fdf200
-    }.st26 {
-        fill: #fde100
-    }.st27 {
-        fill: #ffd100
-    }.st28 {
-        fill: #ffbd00
-    }.st29 {
-        fill: #ffad00
-    }.st30 {
-        fill: #ff9c00
-    }.st31 {
-        fill: #ff7800
-    }.st32 {
-        fill: red
-    }.st33 {
-        fill: #f30102
-    }.st34 {
-        fill: #d20000
-    }.st35 {
-        fill: #c10000
-    }.st36 {
-        fill: #b10000
-    }.st37 {
-        fill: #a10000
-    }.st38 {
-        fill: #900000}.st39{fill:# 770100
-    }.st40 {
-        fill: #5f0100}.st41{fill:# 460101
-    ];
+        [-28, "#646664"],
+        [-26, "#8c8a8c"],
+        [-24, "#b4b2b4"],
+        [-22, "#cccecc"],
+        [-20, "#e4e6e4"],
+        [-18, "#772d76"],
+        [-16, "#b123b0"],
+        [-14, "#d219d1"],
+        [-12, "#f0f"],
+        [-10, "#ff94ff"],
+        [-8, "#3800d1"],
+        [-6, "#325afe"],
+        [-4, "#2695ff"],
+        [-2, "#00cdff"],
+        [0, "#007800"],
+        [2, "#009d00"],
+        [4, "#00bc02"],
+        [6, "#00e200"],
+        [8, "#0f0"],
+        [10, "#fcff00"],
+        [12, "#fdf200"],
+        [14, "#fde100"],
+        [16, "#ffd100"],
+        [18, "#ffbd00"],
+        [20, "#ffad00"],
+        [22, "#ff9c00"],
+        [24, "#ff7800"],
+        [26, "red"],
+        [28, "#f30102"],
+        [30, "#d20000"],
+        [32, "#c10000"],
+        [34, "#b10000"],
+        [36, "#a10000"],
+        [38, "#900000"],
+        [40, "#770100"],
+        [42, "#5f0100"],
+        [44, "#460101"],
+        [46, "#2e0203"],
 
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
