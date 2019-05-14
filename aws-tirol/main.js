@@ -109,23 +109,30 @@ async function loadStations() {
 
         const farbPalette_Wind = [
 
-            [ < 3, "#00b900"]
-            [3 - 4, "#10cd24"]
-            [4 - 5, "#72d475"]
-            [6, "#fed6d3"]
-            [7, "#ffb6b3"]
-            [8, "#ff9e9a"]
-            [9, "#ff8281"]
-            [10, "#ff6160"]
-            [11, "#ff453c"]
-            [ > 11, "#ff200e"]
+            [2.99, "#00b900"],
+            [3.99, "#10cd24"],
+            [5.99, "#72d475"],
+            [6, "#fed6d3"],
+            [7, "#ffb6b3"],
+            [8, "#ff9e9a"],
+            [9, "#ff8281"],
+            [10, "#ff6160"],
+            [11, "#ff453c"],
+            [11.1, "#ff200e"],
         ]
         L.geoJson(stations, {
             pointToLayer: function (feature, latlng) {
-                if (feature.properties.WR / 1, 852) {
+                if (feature.properties.WR / 1.852) {
                     let color = "black";
                     if (feature.properties.WG > 20) {
                         color = "red";
+                    }
+                    for (let i = 0; i < farbPalette_Wind.length; i++) {
+                        console.log(farbPalette_Wind[i], feature.properties.WG);
+                        if (feature.properties.WG < farbPalette_WInd[i][0]) {
+                            color = farbPalette_Wind[i][1];
+                            break;
+                        }
                     }
                     return L.marker(latlng, {
                         icon: L.divIcon({
@@ -182,6 +189,7 @@ async function loadStations() {
             [42, "#5f0100"],
             [44, "#460101"],
             [46, "#2e0203"],
+            ];
 
             L.geoJson(stations, {
                 pointToLayer: function (feature, latlng) {
