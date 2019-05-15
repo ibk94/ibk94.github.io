@@ -74,20 +74,34 @@ karte.setView([48.208333, 16.373056], 12);
 
 // Datensatz zur dauerhaften Akualität einladen URL: aus data.gv.at
 
-const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json"
-async function loadSights(url) {
-    const response = await fetch (url);
-    const sightsData = await response.json();
-    L.geoJson(sightsData,{
-        pointToLayer: function(feature, latlng) {
-            return L.marker(latlng)
-                .binPopup(`
-                <h3>${feature.properties.Name}</h3>
-                `);
-        }
 
+
+const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json"
+
+function makeMarker(feature, latlng) {
+    const icon = L.icon({
+        iconUrl: "http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg",
+        iconSize: [36, 36]
     });
+    const marker = L.marker(latlng, {
+        icon: icon
+    });
+    marker.bindPopup(`
+        <h3>${feature.properties.NAME}</h3>
+        <p>${feature.properties.BEMERKUNG}</p>
+        `);
+    return marker;
+}
+
+async function loadSights(url) {
+    const response = await fetch(url);
+    const sightsData = await response.json();
+    const geoJson = L.geoJson(sightsData, {
+        pointToLayer: makeMarker
+    });
+    karte.addLayer(geoJson);
 
 }
+loadSights(url)
 
 // die Implementierung der Karte startet hier
