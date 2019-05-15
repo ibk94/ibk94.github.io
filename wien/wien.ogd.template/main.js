@@ -69,4 +69,25 @@ karte.addControl(new L.Control.Fullscreen());
 
 karte.setView([48.208333, 16.373056], 12);
 
+
+
+
+// Datensatz zur dauerhaften Akualität einladen URL: aus data.gv.at
+
+const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json"
+async function loadSights(url) {
+    const response = await fetch (url);
+    const sightsData = await response.json();
+    L.geoJson(sightsData,{
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng)
+                .binPopup(`
+                <h3>${feature.properties.Name}</h3>
+                `);
+        }
+
+    });
+
+}
+
 // die Implementierung der Karte startet hier
