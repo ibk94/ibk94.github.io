@@ -96,12 +96,14 @@ function makeMarker(feature, latlng) {
 }
 
 async function loadSights(url) {
+    const clusterGruppe = L.markerClusterGroup();
     const response = await fetch(url);
     const sightsData = await response.json();
     const geoJson = L.geoJson(sightsData, {
         pointToLayer: makeMarker
     });
-    karte.addLayer(geoJson);
+    clusterGruppe.addLayer(geoJson);
+    karte.addLayer(clusterGruppe);
 
 }
 loadSights(url)
