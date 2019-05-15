@@ -106,6 +106,12 @@ async function loadSights(url) {
     karte.addLayer(sehenswuerdigkeitenClusterGruppe);
     layerControl.addOverlay(sehenswuerdigkeitenClusterGruppe, "Sehenswürdigkeiten");
 
+    const suchFeld = new L.Control.Search({
+        layer: sehenswuerdigkeitenClusterGruppe,
+        propertyName: "NAME",
+        zoom: 17
+    });
+    karte.addControl(suchFeld);
 }
 loadSights(url)
 
