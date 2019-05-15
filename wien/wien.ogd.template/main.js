@@ -79,18 +79,20 @@ karte.setView([48.208333, 16.373056], 12);
 const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json"
 
 function makeMarker(feature, latlng) {
-    const icon = L.icon({
+    const fotoicon = L.icon({
         iconUrl: "http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg",
         iconSize: [36, 36]
     });
-    const marker = L.marker(latlng, {
-        icon: icon
+    const sightmarker = L.marker(latlng, {
+        icon: fotoicon
     });
-    marker.bindPopup(`
+    sightmarker.bindPopup(`
         <h3>${feature.properties.NAME}</h3>
         <p>${feature.properties.BEMERKUNG}</p>
+        <hr>
+        <footer><a href ="${feature.properties.WEITERE_INF}">Weblink</a><//footer>
         `);
-    return marker;
+    return sightmarker;
 }
 
 async function loadSights(url) {
