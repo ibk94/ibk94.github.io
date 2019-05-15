@@ -96,16 +96,24 @@ function makeMarker(feature, latlng) {
 }
 
 async function loadSights(url) {
-    const clusterGruppe = L.markerClusterGroup();
+    const sehenswuerdigkeitenClusterGruppe = L.markerClusterGroup();
     const response = await fetch(url);
     const sightsData = await response.json();
     const geoJson = L.geoJson(sightsData, {
         pointToLayer: makeMarker
     });
-    clusterGruppe.addLayer(geoJson);
-    karte.addLayer(clusterGruppe);
+    sehenswuerdigkeitenClusterGruppe.addLayer(geoJson);
+    karte.addLayer(sehenswuerdigkeitenClusterGruppe);
+    layerControl.addOverlay(sehenswuerdigkeitenClusterGruppe, "Sehenswürdigkeiten");
 
 }
 loadSights(url)
 
 // die Implementierung der Karte startet hier
+
+const Massstab = L.control.scale({
+    imperial: false,
+    metric: true
+
+});
+Massstab.addTo(karte);
