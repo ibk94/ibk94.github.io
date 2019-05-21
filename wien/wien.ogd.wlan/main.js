@@ -84,7 +84,7 @@ new L.Control.MiniMap(
 
 // die Implementierung der Karte startet hier
 
-cons url: "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json"
+const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json"
 
 function makeWlan(feature, latlng) {
     const wlanicon = L.icon({
@@ -106,23 +106,23 @@ function makeWlan(feature, latlng) {
 async function loadwlan(url) {
     const wlanClusterGruppe = L.markerClusterGroup();
     const response = await fetch(url);
-    const sightsData = await response.json();
-    const geoJson = L.geoJson(sightsData, {
-        pointToLayer: wlanMarker
+    const wlanData = await response.json();
+    const geoJson = L.geoJson(wlanData, {
+        pointToLayer: makeWlan
     });
     wlanClusterGruppe.addLayer(geoJson);
     karte.addLayer(wlanClusterGruppe);
     layerControl.addOverlay(wlanClusterGruppe, "Public Wlan-Standorte");
 
-    const suchFeld = new L.Control.Search({
+    const wlanFeld = new L.Control.Search({
         layer: wlanClusterGruppe,
         propertyName: "NAME",
         zoom: 17,
         initial: false
     });
-    karte.addControl(suchFeld);
+    karte.addControl(wlanFeld);
 }
-loadSights(url)
+loadwlan(url)
 
 
 const Massstab = L.control.scale({
