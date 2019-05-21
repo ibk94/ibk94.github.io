@@ -84,7 +84,9 @@ new L.Control.MiniMap(
 
 // die Implementierung der Karte startet hier
 
-const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json"
+// EInbau und umbennenung aller Punkte von Sehensuerdigkeiten zu wlan
+
+const urlwlan = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json"
 
 function makeWlan(feature, latlng) {
     const wlanicon = L.icon({
@@ -122,7 +124,69 @@ async function loadwlan(url) {
     });
     karte.addControl(wlanFeld);
 }
-loadwlan(url)
+loadwlan(urlwlan)
+
+
+const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json"
+
+function makeMarker(feature, latlng) {
+    const fotoicon = L.icon({
+        iconUrl: "http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg",
+        iconSize: [15, 15]
+    });
+    const sightmarker = L.marker(latlng, {
+        icon: fotoicon
+    });
+    sightmarker.bindPopup(`
+        <h3>${feature.properties.NAME}</h3>
+        <p>${feature.properties.BEMERKUNG}</p>
+        <hr>
+        <footer><a target= "blank", href ="${feature.properties.WEITERE_INF}">Weblink</a><//footer>
+        `);
+    return sightmarker;
+}
+
+async function loadSights(url) {
+    const sehenswuerdigkeitenClusterGruppe = L.markerClusterGroup();
+    const response = await fetch(url);
+    const sightsData = await response.json();
+    const geoJson = L.geoJson(sightsData, {
+        pointToLayer: makeMarker
+    });
+    sehenswuerdigkeitenClusterGruppe.addLayer(geoJson);
+    karte.addLayer(sehenswuerdigkeitenClusterGruppe);
+    layerControl.addOverlay(sehenswuerdigkeitenClusterGruppe, "Sehenswürdigkeiten");
+
+
+}
+loadSights(url)
+
+const wege = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERLINIEOGD &srsName=EPSG:4326&outputFormat=json"
+
+function linenPopup (feature, layer){
+    const popup = 
+    ` <h3>${feature.properties.NAME}</h3>`;
+    layer.bindPopup(popup);
+}
+
+
+async function loadWege(wegeUrl) {
+    const antwort = await fetch (wegeUrl);
+    const wegeData = await antwort.json();
+    const wegeJson = L.geoJson(wegeData, {
+        style: function() {
+            return {
+                color: "green"
+            };
+        },
+        onEachFeature: linenPopup
+    });
+    karte.addLayer(wegeJson);
+    layerControl.addOverlay(wegeJson, "Spazierwege");
+}
+loadWege(wege);
+
+
 
 
 const Massstab = L.control.scale({
