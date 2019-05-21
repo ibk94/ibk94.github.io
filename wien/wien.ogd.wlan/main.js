@@ -72,42 +72,50 @@ karte.setView([48.208333, 16.373056], 12);
 
 
 
-// Datensatz zur dauerhaften Akualität einladen URL: aus data.gv.at
+// https://github.com/Norkart/Leaflet-MiniMap
+new L.Control.MiniMap(
+    L.tileLayer("https://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+        subdomains: ["maps", "maps1", "maps2", "maps3", "maps4"],
+    }), {
+        zoomLevelOffset: -4,
+        toggleDisplay: true
+    }
+).addTo(karte);
 
+// die Implementierung der Karte startet hier
 
+cons url: "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json"
 
-const url = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json"
-
-function makeMarker(feature, latlng) {
-    const fotoicon = L.icon({
-        iconUrl: "http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg",
+function makeWlan(feature, latlng) {
+    const wlanicon = L.icon({
+        iconUrl: "http://www.data.wien.gv.at/icons/wlanwienatogd.svg",
         iconSize: [15, 15]
     });
-    const sightmarker = L.marker(latlng, {
-        icon: fotoicon
+    const wlanmarker = L.marker(latlng, {
+        icon: wlanicon
     });
-    sightmarker.bindPopup(`
+    wlanmarker.bindPopup(`
         <h3>${feature.properties.NAME}</h3>
         <p>${feature.properties.BEMERKUNG}</p>
         <hr>
         <footer><a target= "blank", href ="${feature.properties.WEITERE_INF}">Weblink</a><//footer>
         `);
-    return sightmarker;
+    return wlanmarker;
 }
 
-async function loadSights(url) {
-    const sehenswuerdigkeitenClusterGruppe = L.markerClusterGroup();
+async function loadwlan(url) {
+    const wlanClusterGruppe = L.markerClusterGroup();
     const response = await fetch(url);
     const sightsData = await response.json();
     const geoJson = L.geoJson(sightsData, {
-        pointToLayer: makeMarker
+        pointToLayer: wlanMarker
     });
-    sehenswuerdigkeitenClusterGruppe.addLayer(geoJson);
-    karte.addLayer(sehenswuerdigkeitenClusterGruppe);
-    layerControl.addOverlay(sehenswuerdigkeitenClusterGruppe, "Sehenswürdigkeiten");
+    wlanClusterGruppe.addLayer(geoJson);
+    karte.addLayer(wlanClusterGruppe);
+    layerControl.addOverlay(wlanClusterGruppe, "Public Wlan-Standorte");
 
     const suchFeld = new L.Control.Search({
-        layer: sehenswuerdigkeitenClusterGruppe,
+        layer: wlanClusterGruppe,
         propertyName: "NAME",
         zoom: 17,
         initial: false
@@ -116,7 +124,6 @@ async function loadSights(url) {
 }
 loadSights(url)
 
-// die Implementierung der Karte startet hier
 
 const Massstab = L.control.scale({
     imperial: false,
@@ -124,31 +131,3 @@ const Massstab = L.control.scale({
 
 });
 Massstab.addTo(karte);
-
-
-//Spazierwege einbauen
-
-const wege = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERLINIEOGD &srsName=EPSG:4326&outputFormat=json"
-
-function linenPopup (feature, layer){
-    const popup = 
-    ` <h3>${feature.properties.NAME}</h3>`;
-    layer.bindPopup(popup);
-}
-
-
-async function loadWege(wegeUrl) {
-    const antwort = await fetch (wegeUrl);
-    const wegeData = await antwort.json();
-    const wegeJson = L.geoJson(wegeData, {
-        style: function() {
-            return {
-                color: "green"
-            };
-        },
-        onEachFeature: linenPopup
-    });
-    karte.addLayer(wegeJson);
-    layerControl.addOverlay(wegeJson, "Spazierwege");
-}
-loadWege(wege);
