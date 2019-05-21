@@ -96,9 +96,9 @@ function makeWlan(feature, latlng) {
     });
     wlanmarker.bindPopup(`
         <h3>${feature.properties.NAME}</h3>
-        <p>${feature.properties.BEMERKUNG}</p>
+        <p>${feature.properties.ADRESSE}</p>
         <hr>
-        <footer><a target= "blank", href ="${feature.properties.WEITERE_INF}">Weblink</a><//footer>
+        <footer><a target= "blank", href ="${feature.properties.WEITERE_INFORMATIONEN}">Weblink</a><//footer>
         `);
     return wlanmarker;
 }
