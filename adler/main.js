@@ -143,16 +143,21 @@ karte.on('click', function (e) {
 
 //gpx datein verwenden können
 new L.GPX("AdlerwegEtappe09.gpx", {
-    async: true,
-    marker_options: {
-        startIconUrl: 'icons/pin-icon-start.png',
-        endIconUrl: 'icons/pin-icon-end.png',
-        shadowUrl: 'icons/pin-shadow.png'
-    }
-}).on('loaded', function (e) {
-    karte.fitBounds(e.target.getBounds());
-}).addTo(karte);
-
-var controlElevation = L.control.elevation({
-    
-}).addTo(karte);
+        async: true,
+        marker_options: {
+            startIconUrl: 'icons/pin-icon-start.png',
+            endIconUrl: 'icons/pin-icon-end.png',
+            shadowUrl: 'icons/pin-shadow.png'
+        }
+    }).on('loaded', function (e) {
+        karte.fitBounds(e.target.getBounds());
+    }).on("addline", function (e) {
+        console.log("linie geladen");
+        const controlElevation = L.control.elevation({
+            detachedView: true,
+            elevationDiv: "#elevation-div",
+        });
+        controlElevation.addTo(karte);
+        controlElevation.addData(e.line);
+    })
+    .addTo(karte);
