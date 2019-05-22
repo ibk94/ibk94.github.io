@@ -130,18 +130,18 @@ Massstab.addTo(karte);
 
 const wege = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERLINIEOGD &srsName=EPSG:4326&outputFormat=json"
 
-function linenPopup (feature, layer){
-    const popup = 
-    ` <h3>${feature.properties.NAME}</h3>`;
+function linenPopup(feature, layer) {
+    const popup =
+        ` <h3>${feature.properties.NAME}</h3>`;
     layer.bindPopup(popup);
 }
 
 
 async function loadWege(wegeUrl) {
-    const antwort = await fetch (wegeUrl);
+    const antwort = await fetch(wegeUrl);
     const wegeData = await antwort.json();
     const wegeJson = L.geoJson(wegeData, {
-        style: function() {
+        style: function () {
             return {
                 color: "green"
             };
@@ -152,3 +152,7 @@ async function loadWege(wegeUrl) {
     layerControl.addOverlay(wegeJson, "Spazierwege");
 }
 loadWege(wege);
+
+
+
+// http://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=44.1&south=-9.9&east=-22.4&west=55.2&username=webmapping&style=full
