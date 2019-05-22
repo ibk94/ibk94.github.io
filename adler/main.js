@@ -137,6 +137,22 @@ var hash = new L.Hash(karte);
 //Koordinaten werden angezeigt
 var coords = new L.Control.Coordinates();
 coords.addTo(karte);
-karte.on('click', function(e) {
-	coords.setCoordinates(e);
+karte.on('click', function (e) {
+    coords.setCoordinates(e);
 });
+
+//gpx datein verwenden können
+new L.GPX("AdlerwegEtappe09.gpx", {
+    async: true,
+    marker_options: {
+        startIconUrl: 'icons/pin-icon-start.png',
+        endIconUrl: 'icons/pin-icon-end.png',
+        shadowUrl: 'icons/pin-shadow.png'
+    }
+}).on('loaded', function (e) {
+    karte.fitBounds(e.target.getBounds());
+}).addTo(karte);
+
+var controlElevation = L.control.elevation({
+    
+}).addTo(karte);
