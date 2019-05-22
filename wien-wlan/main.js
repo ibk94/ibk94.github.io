@@ -105,9 +105,9 @@ function makeWlan(feature, latlng) {
     return wlanmarker;
 }
 
-async function loadwlan(url) {
+async function loadwlan(urlwlan) {
     const wlanClusterGruppe = L.markerClusterGroup();
-    const response = await fetch(url);
+    const response = await fetch(urlwlan);
     const wlanData = await response.json();
     const geoJson = L.geoJson(wlanData, {
         pointToLayer: makeWlan
