@@ -90,13 +90,17 @@ for (let i = 0; i < ETAPPEN.length; i++) {
 
 function etappeErzeugen(nummer) {
     let daten = ETAPPEN[nummer];
-    let titelText = daten.titel;
-    let titelElement = document.getElementById("daten_titel");
-    titelElement.innerHTML = titelText;
+   // let titelText = daten.titel;
+    //let titelElement = document.getElementById("daten_titel");
+    //titelElement.innerHTML = titelText;
 
-    console.log(daten);
+    document.getElementById("daten_titel").innerHTML = daten.titel;
+    document.getElementById("daten_info").innerHTML = daten.info;
+
+    //console.log(daten);
 
 }
+etappeErzeugen(0);
 pulldown.onchange = function (evt) {
     let opts = evt.target.options;
     console.log(opts[opts.selectedIndex].value);
