@@ -81,3 +81,25 @@ new L.Control.MiniMap(
 ).addTo(karte);
 
 // die Implementierung der Karte startet hier
+
+let pulldown = document.getElementById("etappenPulldown");
+for (let i = 0; i < ETAPPEN.length; i++) {
+    //console.log(ETAPPEN [i]);
+    pulldown.innerHTML += `<option value = "${i}">${ETAPPEN[i].titel} </option>`
+}
+
+function etappeErzeugen(nummer) {
+    let daten = ETAPPEN[nummer];
+    let titelText = daten.titel;
+    let titelElement = document.getElementById("daten_titel");
+    titelElement.innerHTML = titelText;
+
+    console.log(daten);
+
+}
+pulldown.onchange = function (evt) {
+    let opts = evt.target.options;
+    console.log(opts[opts.selectedIndex].value);
+    console.log(opts[opts.selectedIndex].text);
+    etappeErzeugen(opts[opts.selectedIndex].value);
+}
