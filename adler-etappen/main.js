@@ -91,10 +91,11 @@ for (let i = 0; i < ETAPPEN.length; i++) {
 let gpxGruppe = L.featureGroup().addTo(karte);
 layerControl.addOverlay(gpxGruppe, "GPX-Track");
 
+let controlElevation = null;
 
 function etappeErzeugen(nummer) {
     let daten = ETAPPEN[nummer];
-   // let titelText = daten.titel;
+    // let titelText = daten.titel;
     //let titelElement = document.getElementById("daten_titel");
     //titelElement.innerHTML = titelText;
 
@@ -102,25 +103,41 @@ function etappeErzeugen(nummer) {
     document.getElementById("daten_info").innerHTML = daten.info;
 
     // GPS daten laden
-    console.log(daten.gpsid);
-    daten.gpsid = daten.gpsid.replace("A","")
-    console.log(daten.gpsid);
+    //console.log(daten.gpsid);
+    daten.gpsid = daten.gpsid.replace("A", "")
+    //console.log(daten.gpsid);
 
     gpxGruppe.clearLayers();
     const gpxTrack = new L.GPX(`gpx/AdlerwegEtappe${daten.gpsid}.gpx`, {
-        async : true,
-        marker_options : {
-            startIconUrl : "icons/pin-icon-start.png",
-            endIconUrl : "icons/pin-icon-end.png",
-            shadowUrl : "icons/pin-shadow.png",
-            iconSize: [32,37]
+        async: true,
+        marker_options: {
+            startIconUrl: "icons/pin-icon-start.png",
+            endIconUrl: "icons/pin-icon-end.png",
+            shadowUrl: "icons/pin-shadow.png",
+            iconSize: [32, 37]
         }
     }).addTo(gpxGruppe);
 
-    gpxTrack.on("loaded", function(){
+    gpxTrack.on("loaded", function () {
         karte.fitBounds(gpxTrack.getBounds());
     });
+
+    gpxTrack.on("addline", function (evt) {
+        if (controlElevation) {
+            controlElevation.clear();
+            document.getElementById("elevation-div").innerHTML = "";
+        }
+        // Höhenprofil zeichen
+        controlElevation = L.control.elevation({
+            theme: "steelblue-theme",
+            detachedView: true,
+            elevationDiv: "#elevation-div"
+        })
+        controlElevation.addTo(karte);
+        controlElevation.addData(evt.line);
+    });
 }
+
 etappeErzeugen(0);
 pulldown.onchange = function (evt) {
     let opts = evt.target.options;
