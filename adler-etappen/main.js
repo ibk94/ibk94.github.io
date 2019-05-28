@@ -101,6 +101,8 @@ function etappeErzeugen(nummer) {
 
     document.getElementById("daten_titel").innerHTML = daten.titel;
     document.getElementById("daten_info").innerHTML = daten.info;
+    document.getElementById("daten_strecke").innerHTML = daten.strecke;
+    document.getElementById("daten_einkehr").innerHTML = daten.einkehr;
 
     // GPS daten laden
     //console.log(daten.gpsid);
@@ -119,10 +121,11 @@ function etappeErzeugen(nummer) {
     }).addTo(gpxGruppe);
 
     gpxTrack.on("loaded", function () {
-        karte.fitBounds(gpxTrack.getBounds());
+        // karte.fitBounds(gpxTrack.getBounds());
     });
 
     gpxTrack.on("addline", function (evt) {
+        //bestehnedes Profil löschen
         if (controlElevation) {
             controlElevation.clear();
             document.getElementById("elevation-div").innerHTML = "";
@@ -141,7 +144,36 @@ function etappeErzeugen(nummer) {
 etappeErzeugen(0);
 pulldown.onchange = function (evt) {
     let opts = evt.target.options;
-    console.log(opts[opts.selectedIndex].value);
-    console.log(opts[opts.selectedIndex].text);
+    // console.log(opts[opts.selectedIndex].value);
+    // console.log(opts[opts.selectedIndex].text);
     etappeErzeugen(opts[opts.selectedIndex].value);
 }
+
+//L.Routing.control({
+waypoints: [
+    [47, 11],
+    [46, 11]
+
+]
+//}).addTo(karte);
+
+const routingMachine = L.Routing.control({}).addTo(karte);
+
+let start, end , marker;
+
+karte.on("click", function (ev) {
+    // console.log("Clicked: ", ev);
+    if (!start) {
+        start = ev.latlng;
+        marker = L.marker(ev.latlng).addTo(karte)
+    } else {
+        end = ev.latlng;
+        routingMachine.setWaypoints([start, end]);
+        routingMachine.route();
+        marker.remove();
+        start = null;
+        
+    }
+
+    // console.log("Start: ", start, "End: ", end);
+})
